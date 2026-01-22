@@ -15,3 +15,6 @@ secretGenerator:
 images:
   - name: postgres
     newTag: 18.1-alpine
+
+patches:
+  - path: postgres-storage-patch.yaml

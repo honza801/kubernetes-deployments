@@ -15,3 +15,6 @@ secretGenerator:
 images:
   - name: mariadb
     newTag: "11.4"
+
+patches:
+  - path: mariadb-storage-patch.yaml
