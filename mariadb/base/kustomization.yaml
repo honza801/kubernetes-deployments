@@ -1,0 +1,25 @@
+#apiVersion: kustomize.config.k8s.io/v1
+#kind: Kustomization
+
+# you can also manage namespace, commonLabels, etc.
+namespace: default
+
+resources:
+  - mariadb-stateful.yaml
+
+# optionally, you can declare vars or use secretGenerator
+secretGenerator:
+  - name: mariadb-secret
+    literals:
+      - MARIADB_ROOT_PASSWORD=password
+      #- MARIADB_USER=user
+      #- MARIADB_PASSWORD=password
+      #- MARIADB_DATABASE=database
+    type: Opaque
+
+images:
+    - name: mariadb
+      newTag: "11.4"
+
+generatorOptions:
+  disableNameSuffixHash: true
